@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import  { ActivityIndicator } from "react-native";
+import { StatusBar, SafeAreaView } from "react-native";
 import {
   useFonts,
   NunitoSans_400Regular,
@@ -7,13 +7,21 @@ import {
 } from "@expo-google-fonts/nunito-sans";
 import theme from "./src/theme";
 import Home from "@screens/Home";
+import Loading from "@components/Loading";
 
 export default function App() {
   const [fontsLoaded] = useFonts({ NunitoSans_400Regular, NunitoSans_700Bold });
 
   return (
     <ThemeProvider theme={theme}>
-      {fontsLoaded ? <Home /> : <ActivityIndicator />}
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      <SafeAreaView style={{ flex: 1 }}>
+        {fontsLoaded ? <Home /> : <Loading />}
+      </SafeAreaView>
     </ThemeProvider>
   );
 }
