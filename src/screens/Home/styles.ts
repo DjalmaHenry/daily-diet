@@ -22,3 +22,10 @@ export const UserIcon = styled(UserCircle).attrs(({ theme }) => ({
     color: theme.COLORS.GRAY_400,
     size: 46
 }))``;
+
+export const TitleMeals = styled.Text`
+    font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+    font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+    color: ${({ theme }) => theme.COLORS.GRAY_600};
+    margin: 24px 0 8px 0;
+`;
