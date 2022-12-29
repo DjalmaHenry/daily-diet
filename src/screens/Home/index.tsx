@@ -94,6 +94,13 @@ export default function Home() {
             />
           </>
         )}
+        ListEmptyComponent={
+          <S.EmptyContainer>
+            <S.EmptyText>Cadastre agora sua primeira refeição!</S.EmptyText>
+            <S.EmptyText>É rápido e fácil!</S.EmptyText>
+            <S.EmptyText>😉</S.EmptyText>
+          </S.EmptyContainer>
+        }
       />
     </S.Container>
   );

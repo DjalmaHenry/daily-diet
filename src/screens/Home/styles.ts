@@ -36,3 +36,16 @@ export const DateMeal = styled.Text`
     color: ${({ theme }) => theme.COLORS.GRAY_600};
     margin: 22px 0 8px 0;
 `;
+
+export const EmptyContainer = styled.View`
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const EmptyText = styled.Text`
+    font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+    font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+    color: ${({ theme }) => theme.COLORS.GRAY_600};
+    margin-top: 24px;
+`;
