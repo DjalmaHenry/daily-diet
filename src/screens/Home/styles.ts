@@ -29,3 +29,10 @@ export const TitleMeals = styled.Text`
     color: ${({ theme }) => theme.COLORS.GRAY_600};
     margin: 24px 0 8px 0;
 `;
+
+export const DateMeal = styled.Text`
+    font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+    color: ${({ theme }) => theme.COLORS.GRAY_600};
+    margin: 22px 0 8px 0;
+`;
