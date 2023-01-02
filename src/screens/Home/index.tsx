@@ -71,7 +71,7 @@ export default function Home() {
       </S.HeaderContainer>
       <Highlight percentage={70} />
       <S.TitleMeals>Refeições</S.TitleMeals>
-      <Button title="Nova Refeição" />
+      <Button title="Nova Refeição" icon="add" />
 
       {/* custom flatlist with separate content per date with mealsList */}
       <FlatList

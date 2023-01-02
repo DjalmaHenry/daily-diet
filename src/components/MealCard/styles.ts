@@ -1,5 +1,5 @@
 import { TouchableOpacity } from "react-native";
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
 export const Container = styled(TouchableOpacity)`
     width: 100%;
@@ -30,15 +30,19 @@ export const TimeContainer = styled.View`
 `;
 
 export const Time = styled.Text`
-    font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-    color: ${({ theme }) => theme.COLORS.GRAY_600};
+    ${({ theme }) => css`
+        font-size: ${theme.FONT_SIZE.SM}px;
+        font-family: ${theme.FONT_FAMILY.BOLD};
+        color: ${theme.COLORS.GRAY_600};
+    `};
 `;
 
 export const Title = styled.Text`
-    font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-    font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
-    color: ${({ theme }) => theme.COLORS.GRAY_600};
+    ${({ theme }) => css`
+        font-size: ${theme.FONT_SIZE.SM}px;
+        font-family: ${theme.FONT_FAMILY.REGULAR};
+        color: ${theme.COLORS.GRAY_600};
+    `};
     margin-left: 8px;
 `;
 

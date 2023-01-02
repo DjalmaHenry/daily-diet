@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 import { ArrowLeft } from "phosphor-react-native";
 
 export type QuestionStyleProps = {
@@ -31,9 +31,11 @@ export const BackButtonIcon = styled(ArrowLeft).attrs(({ theme }) => ({
 `;
 
 export const Title = styled.Text`
-    font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-    color: ${({ theme }) => theme.COLORS.GRAY_600};
+    ${({ theme }) => css`
+        font-size: ${theme.FONT_SIZE.LG}px;
+        font-family: ${theme.FONT_FAMILY.BOLD};
+        color: ${theme.COLORS.GRAY_600};
+    `};
 `;
 
 export const Body = styled.View`
@@ -42,7 +44,7 @@ export const Body = styled.View`
     background-color: ${({ theme }) => theme.COLORS.WHITE};
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
-    padding: 42px 24px;
+    padding: 30px 24px;
 `;
 
 export const TimeContainer = styled.View`
@@ -59,9 +61,11 @@ export const QuestionContainer = styled.View`
 `;
 
 export const Label = styled.Text`
-    font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-    color: ${({ theme }) => theme.COLORS.GRAY_600};
+    ${({ theme }) => css`
+        font-size: ${theme.FONT_SIZE.SM}px;
+        font-family: ${theme.FONT_FAMILY.BOLD};
+        color: ${theme.COLORS.GRAY_600};
+    `};
     margin-bottom: 4px;
 `;
 
@@ -93,7 +97,9 @@ export const OptionStatusColor = styled.View<QuestionStyleProps>`
 `;
 
 export const OptionText = styled.Text`
-    font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
-    font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-    color: ${({ theme }) => theme.COLORS.GRAY_600};
+    ${({ theme }) => css`
+        font-size: ${theme.FONT_SIZE.SM}px;
+        font-family: ${theme.FONT_FAMILY.BOLD};
+        color: ${theme.COLORS.GRAY_600};
+    `};
 `;

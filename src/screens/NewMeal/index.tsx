@@ -1,3 +1,4 @@
+import Button from "@components/Button";
 import Input from "@components/Input";
 import React from "react";
 import { useState } from "react";
@@ -44,6 +45,14 @@ export default function NewMeal() {
             </S.Option>
           </S.OptionsContainer>
         </S.QuestionContainer>
+        <Button
+          title="Cadastrar refeição"
+          style={{
+            position: "absolute",
+            bottom: 0,
+            marginBottom: 24,
+          }}
+        />
       </S.Body>
     </S.Container>
   );
