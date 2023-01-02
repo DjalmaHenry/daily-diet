@@ -3,7 +3,7 @@ import { ArrowLeft } from "phosphor-react-native";
 
 export type QuestionStyleProps = {
     color: 'green' | 'red',
-    response?: 'green' | 'red'
+    response?: 'yes' | 'no' | 'none'
 };
 
 export const Container = styled.View`
@@ -73,11 +73,12 @@ export const OptionsContainer = styled.View`
     margin-top: 8px;
 `;
 
-export const Option = styled.TouchableOpacity`
+export const Option = styled.TouchableOpacity<QuestionStyleProps>`
     width: 48%;
     height: 56px;
     border-radius: 8px;
-    background-color: ${({ theme }) => theme.COLORS.GRAY_200};
+    background-color: ${({ theme, color, response }) => response === 'yes' && color === 'green' ? theme.COLORS.GREEN_LIGHT : response === 'no' && color === 'red' ? theme.COLORS.RED_LIGHT : theme.COLORS.GRAY_200};
+    border: 1px solid ${({ theme, color, response }) => response === 'yes' && color === 'green' ? theme.COLORS.GREEN_DARK : response === 'no' && color === 'red' ? theme.COLORS.RED_DARK : theme.COLORS.WHITE};
     justify-content: center;
     align-items: center;
     flex-direction: row;
