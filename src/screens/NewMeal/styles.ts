@@ -1,12 +1,13 @@
 import styled, { css } from "styled-components/native";
 import { ArrowLeft } from "phosphor-react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export type QuestionStyleProps = {
     color: 'green' | 'red',
     response?: 'yes' | 'no' | 'none'
 };
 
-export const Container = styled.View`
+export const Container = styled(SafeAreaView)`
     flex: 1;
     background-color: ${({ theme }) => theme.COLORS.GRAY_200};
 `;
@@ -42,8 +43,7 @@ export const Body = styled.View`
     flex: 1;
     align-items: center;
     background-color: ${({ theme }) => theme.COLORS.WHITE};
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
+    border-radius: 24px;
     padding: 30px 24px;
 `;
 

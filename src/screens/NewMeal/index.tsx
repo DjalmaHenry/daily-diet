@@ -3,16 +3,23 @@ import Input from "@components/Input";
 import React from "react";
 import { useState } from "react";
 import * as S from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 export default function NewMeal() {
   // state to onDiet with options 'yes' or 'no'
   type DietStatus = "yes" | "no" | "none";
   const [onDiet, setOnDiet] = useState<DietStatus>("none");
 
+  const navigation = useNavigation();
+
+  function handleBackPage() {
+    navigation.goBack();
+  }
+
   return (
     <S.Container>
       <S.Header>
-        <S.BackButton>
+        <S.BackButton onPress={handleBackPage}>
           <S.BackButtonIcon />
         </S.BackButton>
         <S.Title>Nova Refeição</S.Title>

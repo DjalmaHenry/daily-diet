@@ -6,6 +6,7 @@ import Highlight from "@components/Highlight";
 import Button from "@components/Button";
 import { FlatList } from "react-native";
 import MealCard from "@components/MealCard";
+import { useNavigation } from "@react-navigation/native";
 
 type MealProps = {
   id: string;
@@ -22,6 +23,7 @@ type MealListProps = {
 };
 
 export default function Home() {
+  const navigation = useNavigation();
   const [meals, setMeals] = useState<MealProps[]>([
     {
       id: "0",
@@ -63,6 +65,10 @@ export default function Home() {
     return acc;
   }, []);
 
+  function handleNewMeal() {
+    navigation.navigate("NewMeal");
+  }
+
   return (
     <S.Container>
       <S.HeaderContainer>
@@ -71,7 +77,7 @@ export default function Home() {
       </S.HeaderContainer>
       <Highlight percentage={70} />
       <S.TitleMeals>Refeições</S.TitleMeals>
-      <Button title="Nova Refeição" icon="add" />
+      <Button title="Nova Refeição" icon="add" onPress={handleNewMeal} />
 
       {/* custom flatlist with separate content per date with mealsList */}
       <FlatList
