@@ -2,14 +2,16 @@ import { TouchableOpacityProps } from "react-native";
 import theme from "../../theme";
 import * as S from "./styles";
 
+type DietProps = "yes" | "no";
+
 type Props = TouchableOpacityProps & {
   title: string;
   time: string;
-  insideDiet: boolean;
+  insideDiet: DietProps;
 };
 
 export default function MealCard({ title, time, insideDiet, ...rest }: Props) {
-  const color = insideDiet ? "green" : "red";
+  const color = insideDiet === "yes" ? "green" : "red";
   const dietStatusColor =
     color === "green" ? theme.COLORS.GREEN_MID : theme.COLORS.RED_MID;
   return (

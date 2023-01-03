@@ -8,13 +8,15 @@ import { FlatList } from "react-native";
 import MealCard from "@components/MealCard";
 import { useNavigation } from "@react-navigation/native";
 
-type MealProps = {
+export type DietProps = "yes" | "no";
+
+export type MealProps = {
   id: string;
   name: string;
   description: string;
   date: string;
   time: string;
-  insideDiet: boolean;
+  insideDiet: DietProps;
 };
 
 type MealListProps = {
@@ -31,7 +33,7 @@ export default function Home() {
       description: "Pão, leite, café",
       date: "10/10/2020",
       time: "08:00",
-      insideDiet: true,
+      insideDiet: "yes",
     },
     {
       id: "1",
@@ -39,7 +41,7 @@ export default function Home() {
       description: "X-Burguer, batata frita, refrigerante",
       date: "10/10/2020",
       time: "12:00",
-      insideDiet: false,
+      insideDiet: "no",
     },
     {
       id: "2",
@@ -47,7 +49,7 @@ export default function Home() {
       description: "Pão, leite, café",
       date: "09/10/2020",
       time: "15:00",
-      insideDiet: true,
+      insideDiet: "yes",
     },
   ]);
 
@@ -95,6 +97,7 @@ export default function Home() {
                   title={item.name}
                   time={item.time}
                   insideDiet={item.insideDiet}
+                  onPress={() => navigation.navigate("MealDetails", { meal: item })}
                 />
               )}
             />

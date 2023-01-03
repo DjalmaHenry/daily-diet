@@ -28,8 +28,7 @@ export const BackButton = styled.TouchableOpacity`
 export const BackButtonIcon = styled(ArrowLeft).attrs(({ theme }) => ({
     color: theme.COLORS.GRAY_600,
     size: 28
-}))`
-`;
+}))``;
 
 export const Title = styled.Text`
     ${({ theme }) => css`
