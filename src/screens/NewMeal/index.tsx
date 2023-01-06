@@ -5,6 +5,7 @@ import { useState } from "react";
 import * as S from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { DietProps, mealCreate } from "@storage/meal/mealCreate";
+import { Alert } from "react-native";
 
 export default function NewMeal() {
   // state to onDiet with options 'yes' or 'no'
@@ -25,12 +26,13 @@ export default function NewMeal() {
   async function handleSaveMeal() {
     // if name, description, date, time === "", return
     if (
-      name === "" ||
-      description === "" ||
-      date === "" ||
-      time === "" ||
+      name.trim().length === 0 ||
+      description.trim().length === 0 ||
+      date.trim().length === 0 ||
+      time.trim().length === 0 ||
       onDiet === "none"
     ) {
+      Alert.alert("Nova refeição", "Preencha todos os campos");
       return;
     }
 
@@ -44,6 +46,7 @@ export default function NewMeal() {
       });
       navigation.goBack();
     } catch (error) {
+      Alert.alert("Nova refeição", "Não foi possível salvar a nova refeição");
       console.log(error);
     }
   }
