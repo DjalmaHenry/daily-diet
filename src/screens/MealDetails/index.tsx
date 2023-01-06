@@ -3,6 +3,7 @@ import * as S from "./styles";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { MealProps } from "@screens/Home";
 import Button from "@components/Button";
+import { mealDelete } from "@storage/meal/mealDelete";
 
 export default function MealDetails() {
   const navigation = useNavigation();
@@ -16,6 +17,15 @@ export default function MealDetails() {
 
   function handleBackPage() {
     navigation.goBack();
+  }
+
+  async function handleDeleteMeal() {
+    try {
+      await mealDelete(meal.id);
+      navigation.goBack();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -52,7 +62,7 @@ export default function MealDetails() {
               marginBottom: 8,
             }}
           />
-          <Button title="Excluir Refeição" icon="delete" type="secondary" />
+          <Button title="Excluir Refeição" icon="delete" type="secondary" onPress={handleDeleteMeal} />
         </S.ActionsContainer>
       </S.Body>
     </S.Container>

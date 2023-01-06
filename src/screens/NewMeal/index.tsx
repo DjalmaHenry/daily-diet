@@ -4,16 +4,48 @@ import React from "react";
 import { useState } from "react";
 import * as S from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { DietProps, mealCreate } from "@storage/meal/mealCreate";
 
 export default function NewMeal() {
   // state to onDiet with options 'yes' or 'no'
   type DietStatus = "yes" | "no" | "none";
   const [onDiet, setOnDiet] = useState<DietStatus>("none");
 
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+
   const navigation = useNavigation();
 
   function handleBackPage() {
     navigation.goBack();
+  }
+
+  async function handleSaveMeal() {
+    // if name, description, date, time === "", return
+    if (
+      name === "" ||
+      description === "" ||
+      date === "" ||
+      time === "" ||
+      onDiet === "none"
+    ) {
+      return;
+    }
+
+    try {
+      await mealCreate({
+        name,
+        description,
+        date,
+        time,
+        insideDiet: onDiet as DietProps,
+      });
+      navigation.goBack();
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -25,11 +57,26 @@ export default function NewMeal() {
         <S.Title>Nova Refeição</S.Title>
       </S.Header>
       <S.Body>
-        <Input label="Nome" />
-        <Input label="Descrição" height={150} multiline />
+        <Input label="Nome" onChangeText={setName} />
+        <Input
+          label="Descrição"
+          height={150}
+          onChangeText={setDescription}
+          multiline
+        />
         <S.TimeContainer>
-          <Input label="Data" width={48} keyboardType="number-pad" />
-          <Input label="Hora" width={48} keyboardType="number-pad" />
+          <Input
+            label="Data"
+            width={48}
+            keyboardType="number-pad"
+            onChangeText={setDate}
+          />
+          <Input
+            label="Hora"
+            width={48}
+            keyboardType="number-pad"
+            onChangeText={setTime}
+          />
         </S.TimeContainer>
         <S.QuestionContainer>
           <S.Label>Está dentro da dieta?</S.Label>
@@ -59,6 +106,7 @@ export default function NewMeal() {
             bottom: 0,
             marginBottom: 24,
           }}
+          onPress={handleSaveMeal}
         />
       </S.Body>
     </S.Container>

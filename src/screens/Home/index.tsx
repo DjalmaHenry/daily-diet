@@ -1,12 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import * as S from "./styles";
 import LogoImg from "@assets/logo.png";
 import Highlight from "@components/Highlight";
 import Button from "@components/Button";
 import { FlatList } from "react-native";
 import MealCard from "@components/MealCard";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
+import { mealsGetAll } from "@storage/meal/mealsGetAll";
 
 export type DietProps = "yes" | "no";
 
@@ -26,32 +27,7 @@ type MealListProps = {
 
 export default function Home() {
   const navigation = useNavigation();
-  const [meals, setMeals] = useState<MealProps[]>([
-    {
-      id: "0",
-      name: "Café da manhã",
-      description: "Pão, leite, café",
-      date: "10/10/2020",
-      time: "08:00",
-      insideDiet: "yes",
-    },
-    {
-      id: "1",
-      name: "Almoço",
-      description: "X-Burguer, batata frita, refrigerante",
-      date: "10/10/2020",
-      time: "12:00",
-      insideDiet: "no",
-    },
-    {
-      id: "2",
-      name: "Lanche da tarde",
-      description: "Pão, leite, café",
-      date: "09/10/2020",
-      time: "15:00",
-      insideDiet: "yes",
-    },
-  ]);
+  const [meals, setMeals] = useState<MealProps[]>([]);
 
   // join meals of the same date
   const mealsList = meals.reduce((acc: MealListProps[], meal) => {
@@ -70,6 +46,22 @@ export default function Home() {
   function handleNewMeal() {
     navigation.navigate("NewMeal");
   }
+
+  async function fetchMeals() {
+    try {
+      const data = await mealsGetAll();
+      setMeals(data);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchMeals();
+    }, [])
+  );
 
   return (
     <S.Container>
@@ -97,7 +89,9 @@ export default function Home() {
                   title={item.name}
                   time={item.time}
                   insideDiet={item.insideDiet}
-                  onPress={() => navigation.navigate("MealDetails", { meal: item })}
+                  onPress={() =>
+                    navigation.navigate("MealDetails", { meal: item })
+                  }
                 />
               )}
             />
