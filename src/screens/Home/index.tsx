@@ -22,7 +22,7 @@ export default function Home() {
   }
 
   function handleCalculateDietPercentage(data: MealProps[]) {
-    if (meals.length === 0) return setDietPercentage("0");
+    if (meals.length === 0) return setDietPercentage("100");
     const totalMeals = data.length;
     const insideDietMeals = data.filter(
       (meal) => meal.insideDiet === "yes"
