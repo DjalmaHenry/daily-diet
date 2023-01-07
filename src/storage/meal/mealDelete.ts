@@ -12,7 +12,7 @@ export async function mealDelete(id: string) {
 
         console.log(newMeals);
 
-        const storage = JSON.stringify([newMeals]);
+        const storage = JSON.stringify(newMeals);
 
         await AsyncStorage.setItem(MEAL_COLLECTION, storage);
     } catch (error) {

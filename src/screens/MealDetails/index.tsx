@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { MealProps } from "@screens/Home";
 import Button from "@components/Button";
 import { mealDelete } from "@storage/meal/mealDelete";
+import { Alert } from "react-native";
 
 export default function MealDetails() {
   const navigation = useNavigation();
@@ -19,13 +20,30 @@ export default function MealDetails() {
     navigation.goBack();
   }
 
-  async function handleDeleteMeal() {
+  async function deleteMeal() {
     try {
       await mealDelete(meal.id);
       navigation.goBack();
     } catch (error) {
       console.log(error);
     }
+  }
+
+  async function handleDeleteMeal() {
+    Alert.alert(
+      "Deletar Refeição",
+      "Tem certeza que deseja deletar essa refeição?",
+      [
+        {
+          text: "Não",
+          style: "cancel",
+        },
+        {
+          text: "Sim",
+          onPress: deleteMeal,
+        },
+      ]
+    );
   }
 
   return (
@@ -62,7 +80,12 @@ export default function MealDetails() {
               marginBottom: 8,
             }}
           />
-          <Button title="Excluir Refeição" icon="delete" type="secondary" onPress={handleDeleteMeal} />
+          <Button
+            title="Excluir Refeição"
+            icon="delete"
+            type="secondary"
+            onPress={handleDeleteMeal}
+          />
         </S.ActionsContainer>
       </S.Body>
     </S.Container>
