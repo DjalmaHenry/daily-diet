@@ -1,10 +1,10 @@
 import React from "react";
 import * as S from "./styles";
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { MealProps } from "@screens/Home";
 import Button from "@components/Button";
 import { mealDelete } from "@storage/meal/mealDelete";
 import { Alert } from "react-native";
+import { MealProps } from "@storage/meal/mealDTO";
 
 export default function MealDetails() {
   const navigation = useNavigation();

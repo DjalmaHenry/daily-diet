@@ -4,8 +4,9 @@ import React from "react";
 import { useState } from "react";
 import * as S from "./styles";
 import { useNavigation } from "@react-navigation/native";
-import { DietProps, mealCreate } from "@storage/meal/mealCreate";
+import { mealCreate } from "@storage/meal/mealCreate";
 import { Alert } from "react-native";
+import { DietProps } from "@storage/meal/mealDTO";
 
 export default function NewMeal() {
   // state to onDiet with options 'yes' or 'no'

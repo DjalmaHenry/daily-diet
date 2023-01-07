@@ -2,12 +2,12 @@ import theme from "../../theme";
 import * as S from "./styles";
 
 type Props = {
-  percentage: number;
+  percentage: string;
 };
 
 export default function Highlight({ percentage }: Props) {
   // set color based on percentage
-  const color = percentage >= 70 ? "green" : "red";
+  const color = percentage >= '70' ? "green" : "red";
   // set color background based on color with theme colors
   const backgroundColor =
     color === "green" ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT;

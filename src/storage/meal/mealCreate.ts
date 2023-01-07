@@ -1,17 +1,7 @@
-import { MealProps } from '@screens/Home';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MEAL_COLLECTION } from "@storage/storageConfig";
 import { mealsGetAll } from "./mealsGetAll";
-
-export type DietProps = "yes" | "no";
-
-export type CreateMealProps = {
-    name: string;
-    description: string;
-    date: string;
-    time: string;
-    insideDiet: DietProps;
-};
+import { CreateMealProps, MealProps } from './mealDTO';
 
 export async function mealCreate(meal: CreateMealProps) {
     try {
