@@ -38,6 +38,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - [Phosphor Icons](https://phosphoricons.com/)
 - [React Native vector icons](https://oblador.github.io/react-native-vector-icons/)
 - [React Native SVG Transformer](https://github.com/kristerkari/react-native-svg-transformer)
+- [Babel Plugin Module Resolver](https://www.npmjs.com/package/babel-plugin-module-resolver)
 
 ## 💻 Projeto
 
